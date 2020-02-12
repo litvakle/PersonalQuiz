@@ -274,14 +274,14 @@
                         <outletCollection property="multipleSwitches" destination="UrR-vB-Smf" collectionClass="NSMutableArray" id="2Zh-Dp-wjd"/>
                         <outletCollection property="rangedLabels" destination="j0C-vc-OvV" collectionClass="NSMutableArray" id="i1r-16-oz1"/>
                         <outletCollection property="rangedLabels" destination="LPy-iO-slO" collectionClass="NSMutableArray" id="qWF-7h-U3S"/>
-                        <segue destination="xqY-xr-XQd" kind="show" identifier="ResultSegue" id="AAC-CD-zN1"/>
+                        <segue destination="xqY-xr-XQd" kind="presentation" identifier="ResultSegue" modalPresentationStyle="fullScreen" id="AAC-CD-zN1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bJo-Gs-oTB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1577" y="136"/>
         </scene>
-        <!--Результаты-->
+        <!--Results View Controller-->
         <scene sceneID="q6s-Pm-Shb">
             <objects>
                 <viewController id="xqY-xr-XQd" customClass="ResultsViewController" customModule="PersonalQuiz" customModuleProvider="target" sceneMemberID="viewController">
@@ -306,22 +306,30 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Goi-4R-pd9">
+                                <rect key="frame" x="45.5" y="515" width="229" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Вернуться на главный экран"/>
+                                <connections>
+                                    <segue destination="YUx-JM-a1e" kind="unwind" unwindAction="unwindFor:" id="YfQ-9C-p9r"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="xSL-Ci-x5P" firstAttribute="leading" secondItem="MTp-va-thg" secondAttribute="leading" constant="20" id="AVr-Ke-GQv"/>
+                            <constraint firstItem="MTp-va-thg" firstAttribute="bottom" secondItem="Goi-4R-pd9" secondAttribute="bottom" constant="20" id="Dkv-D6-51T"/>
                             <constraint firstAttribute="trailing" secondItem="xSL-Ci-x5P" secondAttribute="trailing" constant="20" id="X41-4d-VjG"/>
                             <constraint firstItem="xSL-Ci-x5P" firstAttribute="centerY" secondItem="NsE-Sc-d9E" secondAttribute="centerY" id="obu-4q-ko6"/>
+                            <constraint firstItem="Goi-4R-pd9" firstAttribute="centerX" secondItem="NsE-Sc-d9E" secondAttribute="centerX" id="tB9-iK-JaJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MTp-va-thg"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Результаты" id="ZGa-Kg-RqR">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="kPS-4U-Nhv">
-                            <connections>
-                                <segue destination="YUx-JM-a1e" kind="unwind" unwindAction="unwindFor:" id="JfA-cE-iY2"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="Y4l-nS-VhX"/>
+                    <connections>
+                        <outlet property="animalLabel" destination="9RI-Rt-PYo" id="qee-bp-G1c"/>
+                        <outlet property="descriptionLabel" destination="kbG-Va-ffl" id="iif-aL-KB1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y0n-nB-jPj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="YUx-JM-a1e" userLabel="Exit" sceneMemberID="exit"/>

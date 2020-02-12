@@ -10,30 +10,36 @@ import UIKit
 
 class ResultsViewController: UIViewController {
     
+    // MARK: IB Outlets
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var animalLabel: UILabel!
+    
+    // MARK: Private properties
     var answerChoosen: [Answer]!
-    // 1. Передать сюда массив с ответами
-    // 2. Определить наиболее часто встречающийся тип животного
-    // 3. Отобразить результаты в соотвствии с этим животным
 
+    // MARK: Override functions
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        updateUI()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // MARK: Private functions
+    private func updateUI() {
+        let animalType = getMostCommonType()
+        
+        animalLabel.text = animalType?.shortDescription ?? "Ошибка"
+        descriptionLabel.text = animalType?.description ?? ""
     }
-    */
+    
+    private func getMostCommonType() -> AnimalType? {
+        var freqTypes: [AnimalType: Int] = [:]
+        answerChoosen.forEach { freqTypes[$0.type, default: 0] += 1 }
+
+        return freqTypes.sorted(by: { $0.value > $1.value } ).first?.key
+    }
     
     deinit {
         print("ResultsViewController was been dealocated")
     }
-
 }
