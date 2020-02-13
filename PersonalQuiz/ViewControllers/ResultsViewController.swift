@@ -26,14 +26,15 @@ class ResultsViewController: UIViewController {
     
     // MARK: Private functions
     private func updateUI() {
-        let animalType = getMostCommonType()
-        
-        animalLabel.text = animalType?.shortDescription ?? "Ошибка"
-        descriptionLabel.text = animalType?.description ?? ""
+        if let animalType = getMostCommonType() {
+            animalLabel.text = "Вы - \(animalType.rawValue)"
+            descriptionLabel.text = animalType.description
+        } 
     }
     
     private func getMostCommonType() -> AnimalType? {
         var freqTypes: [AnimalType: Int] = [:]
+        
         answerChoosen.forEach { freqTypes[$0.type, default: 0] += 1 }
 
         return freqTypes.sorted(by: { $0.value > $1.value } ).first?.key

@@ -12,19 +12,6 @@ enum AnimalType: Character {
     case rabbit = "🐰"
     case turtle = "🐢"
     
-    var shortDescription: String {
-        switch self {
-        case .dog:
-            return "Вы - 🐶"
-        case .cat:
-            return "Вы - 🐱"
-        case .rabbit:
-            return "Вы - 🐰"
-        case .turtle:
-            return "Вы - 🐢"
-        }
-    }
-    
     var description: String {
         switch self {
         case .dog:
